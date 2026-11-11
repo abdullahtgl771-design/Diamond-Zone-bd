@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3f1fb">
+<meta name="color-scheme" content="light">
+<title>DiamondZone – Free Fire Diamond Top-Up</title>
+<style>
+:root{--bg:#f3f1fb;--text:#1a1233;--mut:#6c6785;--pri:#6537ad;--pri2:#8a5cd6;--ok:#12a150;--dia:#19b8ff;--gl:rgba(255,255,255,.58);--gb:rgba(255,255,255,.8);--gs:0 8px 30px rgba(80,50,140,.13);--in:rgba(255,255,255,.75);--line:rgba(101,55,173,.16);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+html{background:var(--bg);scroll-padding-top:90px}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;padding-bottom:130px;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;line-height:1.5}
+body:before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:9;background:var(--gl);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.bgf{position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 40% at 8% 0%,rgba(138,92,214,.38),transparent 70%),radial-gradient(50% 40% at 100% 22%,rgba(25,184,255,.28),transparent 70%),radial-gradient(60% 45% at 30% 100%,rgba(255,120,180,.24),transparent 70%)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px}
+.g{background:var(--gl);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid var(--gb);box-shadow:var(--gs),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.25)}
+.hd{position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:10;margin-top:8px;border-radius:24px;display:flex;justify-content:space-between;align-items:center;padding:8px 10px 8px 12px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:19px;letter-spacing:-.3px}
+.logo b{color:var(--pri)}
+.lg{width:34px;height:34px}
+.gem{width:20px;height:20px;display:inline-block;flex:none;vertical-align:middle;filter:drop-shadow(0 2px 4px rgba(25,168,255,.4))}
+.btn{background:linear-gradient(160deg,var(--pri2),var(--pri));color:#fff;font-weight:700;border:0;border-radius:14px;padding:12px 24px;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(101,55,173,.35),inset 0 1px 0 rgba(255,255,255,.4)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.sm{padding:9px 18px;font-size:14px;border-radius:99px}
+.btn.out{background:var(--in);color:var(--pri);box-shadow:inset 0 0 0 1px var(--line)}
+h2{text-align:center;font-size:24px;margin:26px 0 14px;letter-spacing:-.4px}
+.view{display:none}
+.feat{display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:24px;padding:16px}
+.feat b{font-size:17px;display:block}.feat small{color:var(--mut)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 12px}
+.tile{background:none;border:0;font:inherit;color:inherit;padding:0;cursor:pointer;text-align:center;display:block}
+.tile p{margin:10px 2px 0;font-weight:700;font-size:13px;line-height:1.3}
+.art{position:relative;aspect-ratio:1;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:11%;color:#fff;font-weight:900;text-transform:uppercase;line-height:1.05;font-size:clamp(11px,3.3vw,17px);box-shadow:0 12px 26px rgba(80,50,140,.28),inset 0 1px 0 rgba(255,255,255,.55)}
+.art:after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.38),transparent 45%);pointer-events:none}
+.art .gem{position:absolute;top:20%;left:50%;width:32%;height:32%;transform:translateX(-50%);filter:drop-shadow(0 0 16px rgba(120,220,255,.9))}
+.art b{display:block;font-size:1.22em;color:#ffe266}
+.a1{background:linear-gradient(160deg,#3b1d73,#7a45d1)}.a2{background:linear-gradient(160deg,#1f3fb8,#3f7bff)}.a3{background:linear-gradient(160deg,#2b1260,#6a35c4)}.a4{background:linear-gradient(160deg,#162a7a,#6b4be0)}
+.soon .art{filter:saturate(.75)}
+.soon .art:before{content:"SOON";position:absolute;top:8px;right:8px;z-index:2;background:rgba(255,255,255,.88);color:var(--pri);font-size:9px;padding:2px 8px;border-radius:99px}
+.infos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.info{border-radius:20px;padding:14px;font-size:13px}
+.info b{display:block;font-size:14px;margin-bottom:2px}.info span{color:var(--pri);font-weight:700}
+.back{display:inline-block;margin:14px 0 4px;color:var(--pri);font-weight:700}
+.prod{display:flex;gap:14px;align-items:center;border-radius:22px;padding:14px;margin:8px 0 14px}
+.ic{width:60px;height:60px;border-radius:18px;background:linear-gradient(145deg,var(--pri2),#3b1d73);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.ic .gem{width:34px;height:34px}
+.prod b{font-size:18px;display:block}.prod small{color:var(--mut)}
+.card{border-radius:22px;padding:16px;margin-bottom:14px}
+.card h3{margin:0 0 12px;font-size:16px;display:flex;align-items:center;gap:8px}
+.card h3 i{font-style:normal;background:var(--pri);color:#fff;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.av{width:32px;height:32px;border-radius:50%;background:var(--pri);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+#uname{font-size:13px;font-weight:600;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:480px){#uname{display:none}}
+.gatebox{border-radius:22px;padding:18px;margin-bottom:14px;text-align:center}
+.gatebox p{color:var(--mut);font-size:14px;margin:6px 0 12px}
+.gbtn{background:#fff;color:#222;border:1px solid #ddd;border-radius:14px;padding:12px 22px;font-size:15px;font-weight:600;cursor:pointer;display:inline-flex;gap:10px;align-items:center}
+.gbtn b{color:#4285f4;font-size:18px}
+.lock .card{opacity:.45;pointer-events:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.pack{position:relative;background:var(--in);border:2px solid transparent;box-shadow:inset 0 0 0 1px var(--line);border-radius:16px;padding:12px;text-align:left;cursor:pointer;color:var(--text);font:inherit}
+.pack.on{border-color:var(--pri);background:rgba(101,55,173,.12)}
+.pack .gem{margin-right:6px;width:22px;height:22px}
+.pack b{font-size:15px}.pack span{display:block;color:var(--pri);font-weight:800;margin-top:4px}
+.pack .tag{position:absolute;top:-8px;right:8px;background:#e5484d;color:#fff;font-size:10px;font-weight:700;border-radius:99px;padding:1px 8px;font-style:normal}
+label{font-size:13px;color:var(--mut);display:block;margin-bottom:6px}
+input{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--in);color:var(--text);font-size:16px;outline:none}
+input:focus{border-color:var(--pri)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+.pms{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pm{background:var(--in);border:2px solid transparent;box-shadow:inset 0 0 0 1px var(--line);border-radius:16px;padding:14px 6px;font-weight:800;font-size:15px;cursor:pointer}
+.pm.on{border-color:var(--pri)}
+.how{background:rgba(101,55,173,.1);border-radius:14px;padding:12px;font-size:14px;margin-top:12px}
+.msg{display:none;background:rgba(18,161,80,.12);border:1px solid var(--ok);border-radius:14px;padding:12px;font-size:14px;margin-top:12px}
+.buy{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.buy small{color:var(--mut)}.buy b{font-size:22px;display:block}
+details{border-radius:18px;padding:14px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--mut);margin:10px 0 0;font-size:14px}
+.st{display:flex;gap:12px;align-items:flex-start;border-radius:20px;padding:14px;margin-bottom:10px}
+.st i{font-style:normal;flex:none;width:30px;height:30px;border-radius:50%;background:var(--pri);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.st b{display:block}.st p{margin:2px 0 0;color:var(--mut);font-size:14px}
+.ct{display:flex;justify-content:space-between;align-items:center;border-radius:20px;padding:16px;margin-bottom:10px;font-weight:700}
+.ct span{color:var(--pri)}
+footer{color:var(--mut);font-size:12px;text-align:center;padding:26px 14px}
+nav{position:fixed;left:50%;transform:translateX(-50%);width:min(92%,460px);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:10;border-radius:30px;display:flex;padding:6px;gap:2px}
+nav a{flex:1;text-align:center;font-size:11px;font-weight:600;color:var(--mut);padding:8px 4px;border-radius:24px}
+nav a.on{color:var(--pri);background:rgba(255,255,255,.9);box-shadow:0 2px 10px rgba(80,50,140,.18)}
+nav svg,.fab svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 2px}
+.fab{position:fixed;right:16px;bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:10;width:54px;height:54px;border-radius:50%;background:rgba(101,55,173,.88);color:#fff;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.5)}
+.fab svg{margin:0}
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 84px);transform:translate(-50%,-14px);opacity:0;pointer-events:none;z-index:30;border-radius:99px;padding:10px 20px;font-weight:600;font-size:14px;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="bgf"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9f3ff"/><stop offset="1" stop-color="#19a8ff"/></linearGradient></defs><symbol id="gem" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9z" fill="url(#gg)"/><path d="M2 9h20M9 3l-2 6 5 12M15 3l2 6-5 12" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1" stroke-linejoin="round"/></symbol></svg>
+<div class="wrap">
+<header class="hd g"><a href="#home" class="logo"><svg class="gem lg"><use href="#gem"/></svg><span>Diamond<b>Zone</b></span></a>
+<div><button class="btn sm" id="loginBtn">Login</button><div id="userBox" style="display:none;align-items:center;gap:8px"><span class="av" id="av"></span><span id="uname"></span><button class="btn sm out" id="logoutBtn">Logout</button></div></div></header>
+
+<main>
+<section class="view" id="v-home">
+<h2>Featured</h2>
+<div class="feat g"><div><b>Instant Diamond Top-Up</b><small>UID only · 2–10 min delivery</small></div><a href="#topup" class="btn sm">Top-Up</a></div>
+<h2>Free Fire</h2>
+<div class="tiles">
+<a class="tile" href="#topup"><div class="art a1"><svg class="gem"><use href="#gem"/></svg><span>Diamond<br><b>Topup</b></span></div><p>Diamond Top-Up (BD)</p></a>
+<button class="tile soon" data-soon><div class="art a2"><svg class="gem"><use href="#gem"/></svg><span>Level Up<br><b>Pass</b></span></div><p>Level Up Pass</p></button>
+<button class="tile soon" data-soon><div class="art a3"><svg class="gem"><use href="#gem"/></svg><span>Weekly<br><b>Monthly</b></span></div><p>Weekly &amp; Monthly</p></button>
+<button class="tile soon" data-soon><div class="art a4"><svg class="gem"><use href="#gem"/></svg><span>Weekly<br><b>Lite</b></span></div><p>Weekly Lite</p></button>
+</div>
+<div class="infos">
+<a class="info g" href="https://t.me/abdullah01943" target="_blank" rel="noopener"><b>Offer Updates</b><span>Join Telegram ›</span></a>
+<a class="info g" href="https://www.facebook.com/share/1eNde4kYMG/" target="_blank" rel="noopener"><b>Need help?</b><span>Messenger Support ›</span></a>
+</div>
+</section>
+
+<section class="view" id="v-topup">
+<a href="#home" class="back">‹ Back</a>
+<div id="buy" class="lock">
+<div class="gatebox g" id="gate"><b>Login required</b><p>Please log in with Google to top up.</p><button class="gbtn" id="gLogin"><b>G</b>Continue with Google</button></div>
+<div class="prod g"><div class="ic"><svg class="gem"><use href="#gem"/></svg></div><div><b>Diamond Top-Up (BD)</b><small>Free Fire · Instant delivery</small></div></div>
+<div class="card g"><h3><i>1</i>Select diamond pack</h3><div class="grid" id="packs"></div></div>
+<div class="card g"><h3><i>2</i>Player UID</h3><input id="uid" inputmode="numeric" placeholder="Enter Free Fire UID" maxlength="12"></div>
+<div class="card g"><h3><i>3</i>Payment method</h3>
+<div class="pms"><button class="pm on" data-m="bKash" style="color:#e2136e">bKash</button><button class="pm" data-m="Nagad" style="color:#f6921e">Nagad</button><button class="pm" data-m="Rocket" style="color:#8c3494">Rocket</button></div>
+<div class="how" id="how"></div>
+<div class="row"><div><label for="snd">Your sender number</label><input id="snd" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX"></div>
+<div><label for="trx">TrxID</label><input id="trx" maxlength="14" placeholder="e.g. 9K3A7B2C1D" style="text-transform:uppercase"></div></div></div>
+<div class="card g"><div class="buy"><div><small>Total</small><b id="total">Select a pack</b></div><button class="btn" id="go" disabled>Buy Now</button></div><div class="msg" id="msg"></div></div>
+</div>
+</section>
+
+<section class="view" id="v-tutorial">
+<h2>How to Top-Up</h2>
+<div class="st g"><i>1</i><div><b>Log in with Google</b><p>Tap Login at the top and sign in with your Google account.</p></div></div>
+<div class="st g"><i>2</i><div><b>Pack &amp; UID</b><p>Choose a diamond pack and enter your Free Fire UID.</p></div></div>
+<div class="st g"><i>3</i><div><b>Payment</b><p>Send Money via bKash, Nagad or Rocket, then submit your sender number and TrxID.</p></div></div>
+<div class="st g"><i>4</i><div><b>Get your diamonds</b><p>After verification, diamonds arrive in 2–10 minutes.</p></div></div>
+<h2>FAQ</h2>
+<details class="g"><summary>Do I need my password?</summary><p>No. Only your Player UID is needed. Never share your password.</p></details>
+<details class="g"><summary>What if I enter a wrong UID?</summary><p>Double-check your UID before confirming. Orders sent to a wrong UID cannot be refunded.</p></details>
+</section>
+
+<section class="view" id="v-contact">
+<h2>Contact Us</h2>
+<a class="ct g" href="https://www.facebook.com/share/1eNde4kYMG/" target="_blank" rel="noopener">Messenger<span>Message ›</span></a>
+<a class="ct g" href="https://t.me/abdullah01943" target="_blank" rel="noopener">Telegram<span>Chat ›</span></a>
+</section>
+</main>
+<footer>© 2026 DiamondZone · Not affiliated with or endorsed by Garena. Free Fire is a trademark of its owner.</footer>
+</div>
+
+<a href="https://www.facebook.com/share/1eNde4kYMG/" target="_blank" rel="noopener" class="fab g" aria-label="Messenger support"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="6" rx="2"/><rect x="17" y="13" width="4" height="6" rx="2"/><path d="M19 19c0 1.5-2 2-5 2"/></svg></a>
+<nav class="g">
+<a href="#home" data-v="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+<a href="#tutorial" data-v="tutorial"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M10 9l5 3-5 3z"/></svg>Tutorial</a>
+<a href="#topup" data-v="topup"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>TopUp</a>
+<a href="#contact" data-v="contact"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="6" rx="2"/><rect x="17" y="13" width="4" height="6" rx="2"/><path d="M19 19c0 1.5-2 2-5 2"/></svg>Contact</a>
+</nav>
+<div class="toast g" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.js"></script>
+<script>
+
+var PACKS=[[25,22],[50,40],[115,80],[240,160],[610,400],[1240,800],[2530,1600]];
+var PAY={bKash:'01XXXXXXXXX',Nagad:'01XXXXXXXXX',Rocket:'01XXXXXXXXX'}; // <-- your numbers
+var SB_URL='',SB_ANON=''; // <-- Supabase project URL + anon (public) key
+var MOCK=!!window.__MOCK;
+var $=function(i){return document.getElementById(i)};
+var user=null,token='',sb=null,sel=-1,method='bKash',box=$('packs'),go=$('go'),uid=$('uid'),snd=$('snd'),trx=$('trx'),msg=$('msg');
+PACKS.forEach(function(p,i){
+  var b=document.createElement('button');b.className='pack';b.type='button';
+  b.innerHTML=(i==4?'<em class="tag">HOT</em>':'')+'<svg class="gem"><use href="#gem"/></svg><b></b><span></span>';
+  b.querySelector('b').textContent=p[0]+' Diamonds';
+  b.querySelector('span').textContent='৳'+p[1];
+  b.onclick=function(){sel=i;[].forEach.call(box.children,function(c,j){c.classList.toggle('on',j==i)});upd();msg.style.display='none'};
+  box.appendChild(b);
+});
+[].forEach.call(document.querySelectorAll('.pm'),function(b){b.onclick=function(){method=b.dataset.m;[].forEach.call(document.querySelectorAll('.pm'),function(c){c.classList.toggle('on',c==b)});upd()}});
+function upd(){
+  $('total').textContent=sel<0?'Select a pack':'৳'+PACKS[sel][1];
+  $('how').textContent='Send '+(sel<0?'the amount':'৳'+PACKS[sel][1])+' via '+method+' (Send Money) to '+PAY[method]+', then enter your sender number and TrxID below.';
+  go.disabled=!(user&&sel>=0&&/^\d{6,12}$/.test(uid.value.trim())&&/^01\d{9}$/.test(snd.value)&&/^[A-Za-z0-9]{8,14}$/.test(trx.value.trim()));
+}
+[uid,snd].forEach(function(e){e.oninput=function(){e.value=e.value.replace(/\D/g,'');upd()}});
+trx.oninput=upd;upd();
+function show(t){msg.style.display='block';msg.textContent=t}
+function poll(id){var t=setInterval(function(){fetch('/api/status?id='+id,{headers:{'Authorization':'Bearer '+token}}).then(function(r){return r.json()}).then(function(d){
+  if(d.status==='delivered'){show('Order #'+id+' delivered. Check your Free Fire account.');clearInterval(t)}
+  else if(d.status==='rejected'){show('Order #'+id+' rejected (TrxID or amount mismatch). Please contact support.');clearInterval(t)}
+ }).catch(function(){})},15000)}
+go.onclick=function(){
+  if(!user){login();return}
+  go.disabled=true;show('Submitting...');
+  fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({pack:PACKS[sel][0],uid:uid.value.trim(),method:method,sender:snd.value,trx:trx.value.trim()})})
+  .then(function(r){return r.json()}).then(function(d){
+    if(d.error){show(d.error);upd();return}
+    show('Order #'+d.id+' received. Diamonds will be delivered after payment verification. Keep this page open to see live status.');poll(d.id);
+  }).catch(function(){show('Network error, please try again.');upd()});
+};
+function setUser(s){user=s?s.user:null;token=s?s.access_token:'';
+  $('loginBtn').style.display=user?'none':'';
+  $('userBox').style.display=user?'flex':'none';
+  $('gate').style.display=user?'none':'block';
+  $('buy').classList.toggle('lock',!user);
+  if(user){$('uname').textContent=(user.user_metadata&&user.user_metadata.full_name)||user.email;$('av').textContent=($('uname').textContent||'?').charAt(0).toUpperCase()}
+  upd()}
+function login(){
+  if(MOCK){setUser({user:{email:'demo.user@gmail.com',user_metadata:{full_name:'Demo User'}},access_token:'mock'});return}
+  if(!sb){alert('Supabase config missing');return}
+  sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}})}
+function logout(){if(MOCK){setUser(null);return}sb&&sb.auth.signOut()}
+$('loginBtn').onclick=login;$('gLogin').onclick=login;$('logoutBtn').onclick=logout;
+if(!MOCK&&window.supabase&&SB_URL){
+  sb=supabase.createClient(SB_URL,SB_ANON);
+  sb.auth.getSession().then(function(r){setUser(r.data.session)});
+  sb.auth.onAuthStateChange(function(_e,s){setUser(s)});
+}
+var tt;function toast(t){var e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){e.classList.remove('show')},1800)}
+[].forEach.call(document.querySelectorAll('[data-soon]'),function(b){b.onclick=function(){toast('Coming soon')}});
+var VIEWS=['home','topup','tutorial','contact'];
+function route(){var h=(location.hash||'#home').slice(1);if(VIEWS.indexOf(h)<0)h='home';
+  VIEWS.forEach(function(v){$('v-'+v).style.display=v===h?'block':'none'});
+  [].forEach.call(document.querySelectorAll('nav a'),function(a){a.classList.toggle('on',a.dataset.v===h)});
+  window.scrollTo(0,0)}
+window.addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>

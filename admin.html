@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Admin</title>
+<style>body{font-family:system-ui;margin:0;padding:14px;background:#0d0d12;color:#eee}input,button{padding:10px;border-radius:8px;border:1px solid #333;background:#1b1b24;color:#eee;font-size:15px}
+.o{background:#17171f;border:1px solid #2a2a36;border-radius:10px;padding:12px;margin:10px 0;font-size:14px;line-height:1.6}.o b{color:#ffb300}
+button.d{background:#12a150;border:0}button.r{background:#d33;border:0}.s{float:right;font-weight:700}</style></head><body>
+<h3>Orders</h3><input id="k" type="password" placeholder="Admin key"> <button onclick="login()">Load</button> <button onclick="load()">Refresh</button>
+<div id="list"></div>
+<script>
+var K=sessionStorage.getItem('k')||'';if(K){document.getElementById('k').value=K;load()}
+function login(){K=document.getElementById('k').value;sessionStorage.setItem('k',K);load()}
+function api(m,b){return fetch('/api/admin',{method:m,headers:{'x-admin-key':K,'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined}).then(function(r){return r.json()})}
+function set(id,s){api('POST',{id:id,status:s}).then(load)}
+function load(){api('GET').then(function(d){var el=document.getElementById('list');el.textContent='';
+ if(!Array.isArray(d)){el.textContent='Unauthorized';return}
+ d.forEach(function(o){var x=document.createElement('div');x.className='o';
+  x.innerHTML='<span class="s"></span><b></b><br><span class="i"></span><br><button class="d">Delivered</button> <button class="r">Reject</button>';
+  x.querySelector('.s').textContent=o.status;
+  x.querySelector('b').textContent='#'+o.id+' · '+o.pack+' diamonds · ৳'+o.price;
+  x.querySelector('.i').textContent='UID '+o.uid+' · '+o.method+' '+o.sender+' · '+o.email+' · TrxID '+o.trx_id+' · '+new Date(o.created_at).toLocaleString();
+  x.querySelector('.d').onclick=function(){set(o.id,'delivered')};
+  x.querySelector('.r').onclick=function(){set(o.id,'rejected')};
+  el.appendChild(x)})})}
+</script></body></html>
